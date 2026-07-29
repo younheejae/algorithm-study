@@ -1,0 +1,23 @@
+class Solution {
+    public int solution(int[] wallet, int[] bill) {
+        int answer = 0;
+        
+        // 지갑의 가로길이와 세로길이
+        int width = Math.max(wallet[0], wallet[1]);
+        int height = Math.min(wallet[0], wallet[1]);
+        
+        int m_width = Math.max(bill[0], bill[1]);
+        int m_height = Math.min(bill[0], bill[1]);
+        
+        while(m_width > width || m_height > height) {
+            int folded = m_width / 2;
+            
+            m_width = Math.max(folded, m_height);
+            m_height = Math.min(folded, m_height);
+            
+            answer++;
+        }
+    
+        return answer;
+    }
+}
